@@ -1,0 +1,136 @@
+{
+  "travellers": [
+    {
+      "id": 1,
+      "name": "Mahesh rao",
+      "age": "25",
+      "gender": "male",
+      "dob": "1996-03-13",
+      "address": "Patel Colony",
+      "city": "Yeola",
+      "state": "Maharashtra",
+      "country": "Australia",
+      "destination": "Shimla"
+    },
+    {
+      "name": "Rahul",
+      "age": "28",
+      "gender": "male",
+      "dob": "1995-03-03",
+      "address": "Hari Har colony",
+      "city": "aslpa",
+      "state": "Assam",
+      "country": "India",
+      "destination": "Goa",
+      "id": 2
+    },
+    {
+      "name": "Sonu",
+      "age": "22",
+      "gender": "female",
+      "dob": "1999-03-06",
+      "address": "Basvanagudi",
+      "city": "Bangalore",
+      "state": "karnataka",
+      "country": "India",
+      "destination": "Nandi Hills",
+      "id": 3
+    },
+    {
+      "name": "Akshay",
+      "age": "26",
+      "gender": "male",
+      "dob": "1990-03-08",
+      "address": "gandhi bazaar",
+      "city": "Bangalore",
+      "state": "karnataka",
+      "country": "India",
+      "destination": "Kodaikanal",
+      "id": 4
+    },
+    {
+      "name": "Nihal",
+      "age": "19",
+      "gender": "male",
+      "dob": "1996-06-14",
+      "address": "new colony",
+      "city": "jabalpur",
+      "state": "madhyapreadesh",
+      "country": "India",
+      "destination": "kashmir",
+      "id": 6
+    },
+    {
+      "name": "vivek",
+      "age": "21",
+      "gender": "male",
+      "dob": "2005-09-23",
+      "address": "Bull templae",
+      "city": "Waynad",
+      "state": "Kerala",
+      "country": "India",
+      "destination": "Rameshwaram",
+      "id": 7
+    },
+    {
+      "name": "Ketki Sharma",
+      "age": "15",
+      "gender": "female",
+      "dob": "2005-11-25",
+      "address": "colony2",
+      "city": "ooty",
+      "state": "TamiNadu",
+      "country": "India",
+      "destination": "Manali",
+      "id": 10
+    },
+    {
+      "name": "Sachin",
+      "age": "39",
+      "gender": "male",
+      "dob": "1991-08-15",
+      "address": "Colony3",
+      "city": "sakari",
+      "state": "Maharashtra",
+      "country": "India",
+      "destination": "Gujarat",
+      "id": 13
+    },
+    {
+      "name": "prasad",
+      "age": "37",
+      "gender": "male",
+      "dob": "2022-05-03",
+      "address": "colony 6",
+      "city": "wynad",
+      "state": "kerala",
+      "country": "India",
+      "destination": "shimla",
+      "id": 19
+    },
+    {
+      "name": "Punith Raj",
+      "age": "26",
+      "gender": "male",
+      "dob": "2022-05-05",
+      "address": "basvanagudi",
+      "city": "Bangalore",
+      "state": "Karanataka",
+      "country": "India",
+      "destination": "Coorg",
+      "id": 25
+    },
+    {
+      "name": "tanuj",
+      "age": "15",
+      "gender": "male",
+      "dob": "2022-05-28",
+      "address": "jatra hotel",
+      "city": "Nashik",
+      "state": "Maharashtra",
+      "country": "India",
+      "destination": "Trimbakeshwar",
+      "id": 26
+    }
+  ]
+}
