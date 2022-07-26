@@ -1,14 +1,16 @@
 <template>
-  <v-app class="main">
+  
     <v-main>
-      <NavbarComponent />
+          <!-- <NavbarComponent /> -->
+      
+      
        <v-container>
         
-        <!-- <div class="app text-center">
+        <div class="app text-center">
             <router-link to="/">Vuetify Vuelidate Register Form</router-link>
            <router-link to="/add">Vuelidate Submit Form</router-link> 
             <router-link to="/form" >VForm</router-link>
-        </div> -->
+        </div>
 
        <router-view></router-view>
 
@@ -28,11 +30,11 @@
         </v-btn>
        </v-bottom-navigation>
     </v-main>
-  </v-app>
+
 </template>
 
 <script>
-import NavbarComponent from './components/NavbarComponent.vue';
+// import NavbarComponent from './components/NavbarComponent.vue';
 // import VVFormValidate from './components/VVFormValidate.vue';
 // import FormValidations from './components/FormValidations.vue';
 
@@ -40,7 +42,7 @@ export default {
   name: 'MainComponent',
 
   components: {
-    NavbarComponent
+    //  NavbarComponent
 },
 
   data: () => ({

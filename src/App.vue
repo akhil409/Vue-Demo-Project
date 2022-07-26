@@ -5,11 +5,11 @@
         <NavbarComponent /> 
         <v-container> 
         
-        <div class="app text-center">
+        <!-- <div class="app text-center">
             <router-link to="/">Vuetify Vuelidate Register Form</router-link>
            <router-link to="/add">Vuelidate Submit Form</router-link> 
             <router-link to="/form" >VForm</router-link>
-        </div> 
+        </div>  -->
 
       <router-view></router-view>
 
@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
   .main{
-      background-color:whitesmoke;
+      background-color:#f2f3f4;
    }
 
    .app{

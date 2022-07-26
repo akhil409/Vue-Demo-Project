@@ -5,7 +5,32 @@
           <v-btn-toggle>Hide Data</v-btn-toggle>    
         </v-btn>  -->
         <h1 class="postData">User Details</h1>
-        <v-card  >
+
+        <!-- <table>
+          <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>EMail</th>
+                <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody >
+            <tr v-for="(value,index) in postDetails" :key="index" >
+              <td>{{value.id}}</td>
+              <td>{{value.Title}}</td>
+              <td>{{value.EMail}}</td>
+              <td>
+                <v-btn type="button" color="error">
+                              <v-icon v-on:click="remove(value.id)" >mdi-delete</v-icon>
+                              Delete
+                          </v-btn>
+              </td>
+            </tr>
+          </tbody>
+        </table> -->
+
+         <v-card  >
           <v-card-title  >
                  <v-text-field
                    v-model="search"
@@ -16,15 +41,6 @@
                  >Users Lists</v-text-field>
           </v-card-title>
 
-        <!-- <v-data-table :head="head" :items="travellers" >
-                <template v-slot:item="data" >
-                  <tr>
-                    <td> Travellers:-
-                       {{data.item.travellers.name}}
-                    </td>
-                  </tr>
-                </template>
-        </v-data-table> -->
 
           <v-data-table :headers="headers" :items="postDetails" :search="search" class="card" >
            <template v-slot:item="data">
@@ -46,15 +62,15 @@
                     <td>{{data.item.Browers}}</td>
                     <td> <DialogDetails :send="data.item.id" /> </td>
                     <td> 
-                      <v-btn color="success"> 
-                            <v-icon @click="edit(data.item.id)" >mdi-pencil</v-icon> 
+                      <v-btn color="success" v-on:click="edit(data.item.id)" > 
+                            <v-icon  >mdi-pencil</v-icon> 
                             Edit
                       </v-btn>
                     </td>
                     <td>
-                        <!-- <v-router to="/delete-details/:id" ></v-router> -->
-                          <v-btn color="error">
-                              <v-icon @click="remove(data.item.id)" >mdi-delete</v-icon>
+                         <v-router to="/delete-details/:id" v-on:click="remove(data.item.id)" ></v-router> 
+                          <v-btn type="button" color="error">
+                              <v-icon  >mdi-delete</v-icon>
                               Delete
                           </v-btn>
                         
@@ -62,7 +78,7 @@
                </tr>
            </template>  
           </v-data-table>
-       </v-card>
+       </v-card>  
     </v-main>
 </template>
 
@@ -71,6 +87,9 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import DialogDetails from './DialogDetails.vue';
+// import { doc, deleteDoc } from "firebase/firestore";
+
+
 Vue.use(VueAxios, axios);
 
   export default {
@@ -114,9 +133,10 @@ Vue.use(VueAxios, axios);
             ],
         };
     },
+    // { mode: "no-cors" }
     methods: {
         getUsers: function () {
-            axios.get(`https://passport-registration-app-default-rtdb.firebaseio.com/posts.json`).then((response) => {
+            this.axios.get(`https://passport-registration-app-default-rtdb.firebaseio.com/posts.json`).then((response) => {
                 //    this.fakeData = response.data
                 console.log("Get requested Data",response.data);
                 this.formatePostDetails(response.data);
@@ -132,23 +152,16 @@ Vue.use(VueAxios, axios);
             }
             console.log("Formate Post Details",this.postDetails);
         },
-        // trvellersData(){
-        //       axios.get(`http://localhost:8080/travellers`).then((res)=>{
-        //         console.log( "Travellers Data", res.data);
-        //         this.travellers = res.data;
-        //       }).catch((err)=>{
-        //         console.log('Error in TRavellers data',err);
-        //       })
-        // },
         edit(value){
           console.log("Edit Id is",value.id);
           this.$router.push(`/edit-details/:${value.id}`);
         },
         remove(id){
-            alert('User Data Deleted',id)
-            //  this.$router.push(`/delete-details/:${value.id}`);
-             axios.delete("https://passport-registration-app-default-rtdb.firebaseio.com/posts/"+id).then((id)=>{
+            alert('User Data Deleted',id.value)
+            this.$router.push(`/delete-details/:${id.value}`);
+             axios.delete("https://passport-registration-app-default-rtdb.firebaseio.com/posts/"+id,{ mode: "no-cors" }).then((id)=>{
               console.log('User Deleted',id);
+              this.getUsers();
               alert("User Deleted")
              }).catch((err)=>{
               console.log('Error in Deleting User',err);
@@ -162,9 +175,9 @@ Vue.use(VueAxios, axios);
     updated(){
         this.edit();
     },
-    // unmounted(id){
-    //     this.remove(id);
-    // },
+    unmounted(id){
+        this.remove(id);
+    },
    
 
 }

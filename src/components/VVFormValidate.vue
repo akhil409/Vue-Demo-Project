@@ -1,6 +1,6 @@
 <template>
        <v-container class="form" >
-              <v-row>
+              <v-row>  
                   <v-col>
                        <div class="alert alert-success" v-if="isSuccess">Details Submitted Successfully</div>
                        <v-form ref="signUpForm" class="formNav" v-model="formValidity" @submit.prevent="submitForm">
@@ -13,7 +13,7 @@
                             <span v-if="!$v.title.maxLength && $v.title.$dirty" class="alert alert-danger">Characters should not exceed {{$v.title.$params.maxLength.max}} </span>
                             <!-- <span v-if="$v.title.minLength && $v.title.maxLength" class="alert alert-success">Strong Title!</span> -->
 
-                            <!-- Firstname -->
+                            <!-- Firstname -->  
                             <v-text-field label="Firstname" v-model.trim="firstName"  @blur="$v.firstName.$touch()" required placeholder="Enter your firstname" ></v-text-field>
                             <span v-if="!$v.firstName.required && $v.firstName.$dirty" class="alert alert-danger">Firstname is Required!</span>
                             <span v-if="!$v.firstName.minLength && $v.firstName.$dirty" class="alert alert-danger">Minimum {{$v.firstName.$params.minLength.min}} characters should required!</span>

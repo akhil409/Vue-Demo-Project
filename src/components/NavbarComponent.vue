@@ -1,22 +1,22 @@
 <template>
       <div class="overflow-hidden">
-          <v-app-bar fixed="top" dark dense height="100px" width="300rem" src="https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1464&q=80" >
+          <v-app-bar  dark dense height="100px" width="300rem" src="https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1464&q=80" >
           <v-app-bar-nav-icon class="black--text"></v-app-bar-nav-icon>
           <v-toolbar-title class="passport text-h6 black--text">Passport Registration App</v-toolbar-title>
 
           <v-spacer></v-spacer>
-          <div class="routesCenter">
+          <!-- <div class="routesCenter">
           <router-link to="/" class="routes" >
                    <v-toolbar-title class="validations" > 
                              <v-btn>Vuelidate Validations</v-btn> 
                     </v-toolbar-title>
-          </router-link>
+          </router-link> 
           <router-link to="/add" class="routes">
                    <v-toolbar-title class="validations" > 
                              <v-btn>Custom Validations</v-btn> 
                     </v-toolbar-title>
           </router-link>
-          <router-link to="/login-form" class="routes">
+          <router-link to="/" class="routes">
                     <v-toolbar-title class="validations" >
                             <v-btn>Login Form</v-btn>
                     </v-toolbar-title>
@@ -27,7 +27,7 @@
                     </v-toolbar-title>
           </router-link>
           </div>
-         
+          -->
           <v-spacer></v-spacer>
 
           <v-btn icon>
