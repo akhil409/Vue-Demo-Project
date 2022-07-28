@@ -6,27 +6,12 @@
       dark
     >
       <div class="grey--text text--lighten-1 text-body-2 mb-4">
-        Are you sure you want to delete this album?
+        Are you sure you want to delete this user Data?
       </div>
 
-      <v-btn
-        :disabled="loading"
-        class="ma-1"
-        color="grey"
-        plain
-      >
-        Cancel
-      </v-btn>
+      <v-btn :disabled="loading" class="ma-1" color="grey" plain @click="cancel" >  Cancel </v-btn>
 
-      <v-btn
-        :loading="loading"
-        class="ma-1"
-        color="error"
-        plain
-        @click="remove"
-      >
-        Delete
-      </v-btn>
+      <v-btn :loading="loading" class="ma-1" color="error" plain @click="remove" >  Delete </v-btn>
     </v-sheet>
   </div>
 </template>
@@ -35,10 +20,19 @@
 
 export default{
     name:'DeleteDialog',
+    data(){
+      return{
+           loading:null,
+      }
+    },
     methods:{
         remove(){
             alert('User Data deleted successfully')
             this.$router.push(`/post-details`)
+        },
+
+        cancel(){
+          this.$router.push(`/post-details`)
         }
     }
 

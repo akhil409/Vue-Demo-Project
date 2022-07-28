@@ -63,13 +63,13 @@
                             <!-- <span v-if="$v.firstName.minLength && $v.firstName.maxLength" class="text-success">Strong Title!</span> -->
 
                             <!-- Password -->
-                            <v-text-field label="Password" v-model.trim="password" @blur="$v.password.$touch()" counter="10" required placeholder="Enter password" ></v-text-field>
+                            <v-text-field label="Password" type="password" v-model.trim="password" @blur="$v.password.$touch()" counter="10" required placeholder="Enter password" ></v-text-field>
                             <span v-if="!$v.password.required && $v.password.$dirty" class="alert alert-danger">Password is Required!</span>
                             <span v-if="(!$v.password.minLength || !$v.password.maxLength) && $v.password.$dirty" class="alert alert-danger">Password must be between {{$v.password.$params.minLength.min}} to {{$v.password.$params.maxLength.max}} characters!</span>
                             <!-- <span v-if="$v.firstName.minLength && $v.firstName.maxLength" class="text-success">Strong Title!</span> -->
 
                             <!-- Confirm Password -->
-                            <v-text-field label="Confirm Password" v-model.trim="confirmPassword" @blur="$v.confirmPassword.$touch()" counter="10" required placeholder="Enter confirm password" ></v-text-field>
+                            <v-text-field label="Confirm Password" type="password" v-model.trim="confirmPassword" @blur="$v.confirmPassword.$touch()" counter="10" required placeholder="Enter confirm password" ></v-text-field>
                             <span v-if="!$v.confirmPassword.sameAsPassword.required && $v.confirmPassword.sameAsPassword.$dirty" class="alert alert-danger">Confirm Password is Required!</span>
                             <span v-if="!$v.confirmPassword.sameAsPassword" class="alert alert-danger">Password and Confirm Password should match</span>
                             
@@ -83,6 +83,7 @@
                             <v-radio-group v-model="gender" label="Select Gender" row @blur="$v.gender.$touch()" required >
                               <v-radio label="Male" value="male"></v-radio>
                               <v-radio label="Female" value="female"></v-radio>
+                              <v-radio label="Others" value="others"></v-radio>
                             </v-radio-group>  
                             <span v-if="!$v.gender.required && $v.gender.$dirty" class="alert alert-danger">This field is Required!</span>             
                            
@@ -95,9 +96,25 @@
                             <span v-if="!$v.images.required && $v.images.$dirty" class="alert alert-danger">This field is Required!</span>
                             
                             <!-- Date of Birth -->
-                            <v-text-field  label="DOB" v-model="dob" readonly prepend-icon="mdi-calendar"></v-text-field>
-                            
-                            <v-date-picker type="date" class="datePicker" v-model="dob" @blur="$v.dob.$touch()" required  ></v-date-picker>
+                            <!-- <v-text-field  label="DOB" v-model="date" readonly prepend-icon="mdi-calendar"></v-text-field>                             -->
+                            <!-- <v-date-picker type="date" class="datePicker" v-model="dob" @blur="$v.dob.$touch()" required  ></v-date-picker> -->
+                            <v-menu
+                                    ref="menu"
+                                    v-model="menu"
+                                    :close-on-content-click="false"
+                                    :return-value.sync="dob"
+                                    transition="scale-transition"
+                                    offset-y
+                                    min-width="auto" >
+                             <template v-slot:activator="{ on, attrs }">
+                               <v-text-field v-model="dob" label="DOB" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"></v-text-field>
+                             </template>
+                             <v-date-picker v-model="dob" @input="menu2 = false" @blur="$v.dob.$touch()" required >
+                             <v-spacer></v-spacer>
+                                 <v-btn text color="primary" @click="menu2 = false" > Cancel </v-btn>
+                                 <v-btn text color="primary" @click="$refs.menu.save(dob)"> OK </v-btn>
+                             </v-date-picker>
+                            </v-menu>
                             <span v-if="!$v.dob.required && $v.dob.$dirty" class="alert alert-danger" >This field is Required!</span>
 
                             <v-checkbox label="Agree to terms & conditions" v-model="agreeToTerms" @blur="$v.agreeToTerms.$touch()" required ></v-checkbox>
@@ -151,8 +168,10 @@ export default {
              browers:['Chrome','Firefox','Safari','Edge','Brave'],
              images:null,
              gender:null,
-             dob1:null,
+             date:null,
              isSuccess:false,
+             menu2:null,
+
 
         }
     },

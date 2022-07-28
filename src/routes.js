@@ -7,6 +7,7 @@ import DeleteDialogVue from "./components/DeleteDialog.vue";
 import LoginFormVue from "./components/LoginForm.vue";
 import MainComponentVue from "./components/MainComponent.vue";
 import NavbarComponentVue from "./components/NavbarComponent.vue";
+import ForgotPassword from "./components/ForgotPassword.vue";
 
 // import VForm from "./components/VForm.vue";
 
@@ -19,5 +20,6 @@ export default[
     {path:'/register-form', component:VVFormValidateVue },
     {path:'/main-component', component:MainComponentVue },
     {path:'/navbar-component', component:NavbarComponentVue },
+    {path:'/forgot-password', component:ForgotPassword }
     // {path:'/form', component:VForm }
 ]

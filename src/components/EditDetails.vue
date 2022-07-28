@@ -1,7 +1,6 @@
 <template>
        <v-container class="form" >
-              <v-row>
-                  <v-col>
+
                        <div class="alert alert-success" v-if="isSuccess">Details Updated Successfully</div>
                        <v-form ref="signUpForm" class="formNav" v-for="(value,index) in previousDetails" :key="index" v-model="formValidity" @submit.prevent="updateDetails">
                             <h1 class="text center">Update users data</h1>
@@ -105,12 +104,6 @@
                             <hr>
                             <!-- Submit Button -->
                             <div class="button">
-
-                            <!-- Validate Form -->
-                            <!-- <v-btn color="success" class="mr-4" @click="validateForm">Validate Form</v-btn> -->
-                            <!-- Reset Validation -->
-                            <!-- <v-btn class="mr-4" color="warning" @click="resetValidation" >Reset Validation</v-btn>  -->
-                            <!-- Reset -->
                            
                             <v-btn  class="black white--text" text @click="isSuccess = false"> Cancel </v-btn>
                             <router-link to="/post-details">
@@ -119,8 +112,6 @@
                            
                             </div>
                        </v-form>
-                  </v-col>
-              </v-row>
        </v-container>
 </template>
 
@@ -312,6 +303,7 @@ export default {
      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
      background-color: white;
      margin-top: 6rem;
+     height: 20rem;
   }
 
   .datePicker{

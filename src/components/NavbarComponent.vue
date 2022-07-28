@@ -1,8 +1,13 @@
 <template>
       <div class="overflow-hidden">
           <v-app-bar  dark dense height="100px" width="300rem" src="https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1464&q=80" >
-          <v-app-bar-nav-icon class="black--text"></v-app-bar-nav-icon>
-          <v-toolbar-title class="passport text-h6 black--text">Passport Registration App</v-toolbar-title>
+          <v-app-bar-nav-icon class="black--text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+          <v-tooltip bottom>
+           <template v-slot:activator="{ on, attrs }">
+          <v-toolbar-title class="text-h6 black--text" dark v-bind="attrs" v-on="on"> <router-link to="/" class="passport">Passport Registration App</router-link> </v-toolbar-title>
+                </template>
+           <span>Home Page</span>
+        </v-tooltip>
 
           <v-spacer></v-spacer>
           <!-- <div class="routesCenter">
@@ -29,34 +34,59 @@
           </div>
           -->
           <v-spacer></v-spacer>
-
-          <v-btn icon>
+        
+        <v-tooltip bottom>
+           <template v-slot:activator="{ on, attrs }">
+             <v-btn icon color="primary" dark v-bind="attrs" v-on="on">
               <v-icon class=" white--text">mdi-heart</v-icon>
-          </v-btn>
+             </v-btn>
+            </template>
+           <span>Favourites</span>
+        </v-tooltip>
 
-          <v-btn icon>
-              <v-icon class=" white--text">mdi-magnify</v-icon>
+        <v-tooltip bottom>
+           <template v-slot:activator="{ on, attrs }">
+          <v-btn icon dark v-bind="attrs" v-on="on">
+              <v-icon class=" white--text"  >mdi-magnify</v-icon>
           </v-btn>
+                    </template>
+           <span>Search here..</span>
+        </v-tooltip>  
           
-          
+        <v-tooltip bottom>
+           <template v-slot:activator="{ on, attrs }">  
           <template >
-              <v-btn icon class="white--text">
+              <v-btn icon class="white--text" dark v-bind="attrs" v-on="on">
                  <v-icon>mdi-dots-vertical</v-icon>
               </v-btn>
-          </template>
-
-          <!-- <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-          </v-list> -->
-       
+          </template> 
+                      </template>
+           <span>Links</span>
+        </v-tooltip>      
 
           </v-app-bar>
+          
+          <v-navigation-drawer v-model="drawer" absolute bottom temporary class="listGroup" >      <v-list nav dense>
+          <v-list-item-group v-model="group"  active-class="deep-purple--text text--accent-4">
+          <v-list-item>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>About Us</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Contact Us</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>My Files</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
       </div>
 </template>
 
@@ -65,7 +95,8 @@ export default {
     name:'NavbarComponent',
     data(){
         return{
-
+        group:null,
+        drawer:null
         }
     }
 
@@ -88,6 +119,7 @@ export default {
 
     .passport{
         font-weight: bold;
+        color: black;
     }
 
     .routesCenter{
@@ -98,6 +130,10 @@ export default {
 
     a{
         text-decoration: none;
+    }
+
+    .listGroup{
+        background-color: whitesmoke;
     }
 
 </style>

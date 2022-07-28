@@ -68,11 +68,13 @@
                       </v-btn>
                     </td>
                     <td>
-                         <v-router to="/delete-details/:id" v-on:click="remove(data.item.id)" ></v-router> 
-                          <v-btn type="button" color="error">
+                         <!-- <v-router to="/delete-details/:id" v-on:click="remove(data.item.id)" > -->
+                         <v-btn type="button" color="error" v-on:click="remove(data.item.id)">
                               <v-icon  >mdi-delete</v-icon>
                               Delete
                           </v-btn>
+                          
+                          
                         
                     </td>
                </tr>
@@ -154,7 +156,11 @@ Vue.use(VueAxios, axios);
         },
         edit(value){
           console.log("Edit Id is",value.id);
-          this.$router.push(`/edit-details/:${value.id}`);
+          this.$router.push(`/edit-details/:${value.id}`).then(()=>{
+            console.log('Successfully opend the update box');
+          }).catch(()=>{
+            console.log('Error in opening updated box');
+          })
         },
         remove(id){
             alert('User Data Deleted',id.value)
@@ -172,9 +178,9 @@ Vue.use(VueAxios, axios);
         this.getUsers();  
  
     },
-    updated(){
-        this.edit();
-    },
+    // updated(id){
+    //     this.edit(id);
+    // },
     unmounted(id){
         this.remove(id);
     },

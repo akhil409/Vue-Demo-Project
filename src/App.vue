@@ -3,19 +3,14 @@
     <v-main>
       <!-- <LoginForm /> -->
         <NavbarComponent /> 
-        <v-container> 
         
-        <!-- <div class="app text-center">
-            <router-link to="/">Vuetify Vuelidate Register Form</router-link>
-           <router-link to="/add">Vuelidate Submit Form</router-link> 
-            <router-link to="/form" >VForm</router-link>
-        </div>  -->
+        <v-container> 
 
       <router-view></router-view>
 
        </v-container>
        <v-bottom-navigation class="navbt" color="teal" white grow>
-        <v-btn>
+        <v-btn @click="back">
           <span class="black--text">Recents</span>
           <v-icon class="black--text">mdi-history</v-icon>
         </v-btn>
@@ -49,6 +44,11 @@ export default {
   data: () => ({
     //
   }),
+  methods:{
+    back(){
+      this.$router.go(-1)
+    }
+  }
 };
 </script>
 
@@ -65,6 +65,11 @@ export default {
 
    .navbt{
     background-color: aliceblue;
+   }
+
+   .toggle{
+    display: flex;
+    flex-direction: column;
    }
 
 </style>
